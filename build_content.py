@@ -1,7 +1,7 @@
 import json,re,pathlib,shutil,fitz
 P=pathlib.Path(__file__).parent
 D=json.loads((P/'sources.json').read_text(encoding='utf8'))
-OUT=P/'dist';OUT.mkdir(exist_ok=True)
+OUT=P/'docs';OUT.mkdir(exist_ok=True)
 themes={'行政执法':'执法 法治 裁量 监管 处罚 普法','基层治理':'基层 治理 社区 协同 网格 党建','民生服务':'民生 服务 群众 政务 养老 就业 教育 医疗','乡村振兴':'乡村 农村 农业 农民 振兴','经济发展':'经济 产业 企业 营商 市场 消费','科技创新':'科技 创新 技术 数字 人才','文化建设':'文化 文明 传统 文旅 传承','生态文明':'生态 环境 绿色 低碳 污染','担当实干':'奋斗 实干 担当 坚持 理想 信念'}
 def classify(t):
  scores={k:sum(t.count(w) for w in v.split()) for k,v in themes.items()}

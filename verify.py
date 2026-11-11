@@ -7,7 +7,7 @@ with sync_playwright() as p:
  page=b.new_page(viewport={'width':1440,'height':1000})
  errors=[]
  page.on('pageerror',lambda e:errors.append(str(e)))
- page.goto((root/'dist/index.html').as_uri())
+ page.goto((root/'docs/index.html').as_uri())
  page.wait_for_load_state('networkidle')
  assert page.locator('.theme').count()==9
  page.screenshot(path=str(root/'desktop.png'),full_page=True)
